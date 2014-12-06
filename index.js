@@ -12,14 +12,14 @@ var save_path = __dirname + '/clones';
 app.get('/clone', function(req,res){
     var url = req.query.url;
     var result = {
-        demo_url: req.headers.host + '/' + url,
-        download: req.headers.host + '/' + url + '.zip'
-    }
+        demo_url: '/' + url,
+        download: '/' + url + '.zip'
+    };
 
     wget(url, save_path, function(){
         zip(save_path + '/' + url, save_path + '/' + url + '.zip', function(){
-            res.send(result)
-        })
+            res.send(result);
+        });
     });
 });
 
@@ -32,8 +32,8 @@ function zip(directory,zip_name,cb){
         }
 
 
-        cb()
-    })
+        cb();
+    });
 }
 
 function wget(url,save_path,cb){
@@ -44,6 +44,6 @@ function wget(url,save_path,cb){
 
         process.stderr.write(err);
         process.stdout.write(out);
-        cb()
-    })
+        cb();
+    });
 }

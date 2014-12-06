@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<link rel="stylesheet" type="text/css" href="/bower_components/foundation/css/foundation.css"/>
+    </head>
+
+    <body>
+	<section class="row">
+	    <div class="columns text-center">
+		<h1>Cloner</h1>
+		<h2 class="subheader">Easiest way to clone a site</h2>
+		<p>Enter a domain to clone</p>
+		<input placeholder="Enter a domain to clone" id="domain" type="text" name="domain"><a href="#" class="clone button">Clone</a>
+		<hr>
+		<div class="result" style="display:none;">
+		    <h3></h3>
+		    <p><a class="demo" href="">Cloned Demo</a></p>
+		    <p><a class="download" href="">Download cloned site</a></p>
+		</div>
+	    </div>
+	</section>
+
+
+	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+	<script>
+	 $(document).ready(function(){
+	     $('.clone.button').click(function(e){
+		 e.preventDefault();
+		 var domain = $('#domain').val();
+		 if(domain.length > 3){
+		     $.get('/clone?url=' + domain, function(res){
+			 var $site = $('.result h3');
+			 var $demo = $('.result .demo');
+			 var $download = $('.result .download');
+			 $site.text(domain);
+			 $demo.attr('href',res.demo_url);
+			 $download.attr('href',res.download);
+			 $('.result').toggle('hide');
+		     });
+		 }
+	     });
+	 });
+	</script>
+
+    </body>
+</html>

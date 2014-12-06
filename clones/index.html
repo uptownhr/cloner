@@ -7,7 +7,7 @@
     <body>
 	<section class="row">
 	    <div class="columns text-center">
-		<h1>Cloner</h1>
+		<h1>Lov.io</h1>
 		<h2 class="subheader">Easiest way to clone a site</h2>
 		<p>Enter a domain to clone</p>
 		<input placeholder="Enter a domain to clone" id="domain" type="text" name="domain"><a href="#" class="clone button">Clone</a>
@@ -33,8 +33,8 @@
 			 var $demo = $('.result .demo');
 			 var $download = $('.result .download');
 			 $site.text(domain);
-			 $demo.attr('href',res.demo_url);
-			 $download.attr('href',res.download);
+			 $demo.attr('href','http://' + res.demo_url);
+			 $download.attr('href','http://' + res.download);
 			 $('.result').toggle('hide');
 		     });
 		 }

@@ -31,8 +31,7 @@ function zip(directory,zip_name,cb){
             console.log(err);
         }
 
-        process.stderr.write(err);
-        process.stdout.write(out);
+
         cb()
     })
 }
